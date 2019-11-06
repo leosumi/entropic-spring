@@ -1,0 +1,65 @@
+dpd
+
+Title	" Entropic Spring "
+Date	14/11/18
+Comment	" Entropic spring simulation. "
+
+State	random
+
+Bead	W
+		0.5
+		25
+		4.5
+
+Bead	B
+		0.5
+		25	25
+		4.5	4.5
+
+Bead	BH
+		0.5
+		25	25	25
+		4.5	4.5	4.5
+
+Bead	BT
+		0.5
+		25	25	25	25
+		4.5	4.5	4.5	4.5
+
+Bond  B B  128.0  0.5
+Bond  BH B 128.0  0.5
+Bond  BT B 128.0  0.5
+
+Polymer	Water    0.9995   " (W) "
+Polymer Spring   0.0005   " (BH (12 B) BT) "
+
+Box         30  10  10       1  1  1
+Density		3
+Temp        1
+RNGSeed		-4436
+Lambda		0.5
+Step		0.01
+Time		5000
+SamplePeriod     10
+AnalysisPeriod	 2500
+DensityPeriod    10
+DisplayPeriod    100
+RestartPeriod    500
+Grid		1  1  1
+
+
+Command SetCurrentStateCamera         1    0.5 -1.0 -0.5  0.5 0.5 0.5
+Command SetCurrentStateDefaultFormat  1    Paraview
+
+Command SelectBeadTypeInSimBox	1	head	BH
+Command	SelectBeadTypeInSimBox	1	tail	BT
+
+Command	Comment 2000	// Apply a constant force to the first and last beads in the +X and -X directions //
+
+Command ConstantForceOnTarget 2000 head fh 1 0 0 6.0
+Command ConstantForceOnTarget 2000 tail ft 1 0 0 -6.0
+
+Command	Comment	5000	// Delete the applied forces //
+
+Command	RemoveCommandTargetActivity	5000	fh
+Command	RemoveCommandTargetActivity	5000	ft
