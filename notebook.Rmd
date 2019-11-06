@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
-The simulation contains a single polymer constituated of 14 beads. The simulation runs during 5000 time steps. A force is applied on both ends of the polymer from time step 2000.
+The simulation contains a single polymer constituted of 14 beads. The simulation runs during 5000 time steps. A force is applied on both ends of the polymer from time step 2000.
 
 A second simulation scenario using sticky beads is also performed. 4 continuous beads of the polymer are replaced by sticky beads that tends to attract each other.
 
@@ -53,7 +53,7 @@ ggplot(data = data.combine, aes(x = time, y = spring.end.end.length, colour = fo
   ylab("spring end-to-end length")
 ```
 
-As espected, a greater force will strech the spring more.
+As expected, a greater force will stretch the spring more.
 
 ```{r}
 tmp <- data50["time"]
@@ -86,9 +86,9 @@ ggplot(data = data.combine, aes(x = time, y = spring.end.end.length, colour = st
   ylab("spring end-to-end length")
 ```
 
-A force of 50 or 10 was applied from time 2000 to 5000. Before the force is applied, we can see that the spring containsing sticky beads has a smaller end-to-end length. After the force is applied, the effect of the sticky beads is negligable compared to the effect of the force in the case of a large applied force. If a smaller force is applied to the spring, like a force of 10, the sticky beads have a greater effect.
+A force of 50 or 10 was applied from time 2000 to 5000. Before the force is applied, we can see that the spring containing sticky beads has a smaller end-to-end length. After the force is applied, the effect of the sticky beads is negligible compared to the effect of the force in the case of a large applied force. If a smaller force is applied to the spring, like a force of 10, the sticky beads have a greater effect.
 
-The applied force will overstrech the spring the first time steps after application. For this reason, the average end-to-end length will be calculated from time 2500. 
+The applied force will overstretch the spring the first time steps after application. For this reason, the average end-to-end length will be calculated from time 2500. 
 
 ```{r}
 data <- read.csv(file = "data.csv")
@@ -110,6 +110,6 @@ ggplot(data = data.small, aes(x = length, y = force, colour = sticky)) +
   xlab("average end-to-end length")
 ```
 
-The spring constant is not constant, but it seams to be similar between the spring containing sticky beads and the one containing none. The plot shows that the spring constant increase with respect to the average end-to-end length.
+The spring constant is not constant, but it seems to be similar between the spring containing sticky beads and the one containing none. The plot shows that the spring constant increase with respect to the average end-to-end length.
 
 The source code is available at <https://github.com/leosumi/entropic-spring>.
