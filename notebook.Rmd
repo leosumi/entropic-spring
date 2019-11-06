@@ -113,3 +113,5 @@ ggplot(data = data.small, aes(x = length, y = force, colour = sticky)) +
 ```
 
 The spring constant is not constant, but it seams to be similar between the spring containing sticky beads and the one containing none. The plot shows that the spring constant increase with respect to the average end-to-end length
+
+The source code is available at <https://github.com/leosumi/entropic-spring>.
