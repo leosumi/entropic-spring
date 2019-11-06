@@ -1,6 +1,6 @@
 # Simulation of an entropic spring
 
-This repository contains a homework for the *computational cell biology* course given at EPFL.
+This repository contains a homework for the *computational cell biology* course given at EPFL (BIOENG-455, 2019).
 
 ## Generating output files
 
