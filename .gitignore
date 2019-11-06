@@ -1,3 +1,13 @@
+#
+# Generated files
+#
+data/
+!data/dmpci.*
+data.csv
+
+#
+# R
+#
 # History files
 .Rhistory
 .Rapp.history
