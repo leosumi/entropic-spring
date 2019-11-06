@@ -3,8 +3,8 @@ title: "Simulation of an entropic spring using dissipative particle dynamics"
 author: "Léo Sumi"
 date: "6 November 2019"
 output:
-  html_notebook: default
   pdf_document: default
+  html_notebook: default
 ---
 
 ```{r include = FALSE}
@@ -36,19 +36,17 @@ data10.sticky <- read.table(file = "data/dmpchs.10.sticky", col.names = labels.s
 data30.sticky <- read.table(file = "data/dmpchs.30.sticky", col.names = labels.sticky)
 data50.sticky <- read.table(file = "data/dmpchs.50.sticky", col.names = labels.sticky)
 data70.sticky <- read.table(file = "data/dmpchs.70.sticky", col.names = labels.sticky)
-
-#head(data50)
 ```
 
 ```{r}
- tmp <- data30["time"]
+tmp <- data30["time"]
 tmp["0"] <- data0["spring.end.end.length"]
 tmp["30"] <- data30["spring.end.end.length"]
 tmp["50"] <- data50["spring.end.end.length"]
 tmp["70"] <- data70["spring.end.end.length"]
 data.combine <- melt(tmp, id = "time", variable.name = "force", value.name = "spring.end.end.length")
 rm(tmp)
-#head(data.combine)
+
 ggplot(data = data.combine, aes(x = time, y = spring.end.end.length, colour = force)) +
   geom_line() +
   labs(title = "Spring streching") +
@@ -88,9 +86,9 @@ ggplot(data = data.combine, aes(x = time, y = spring.end.end.length, colour = st
   ylab("spring end-to-end length")
 ```
 
-A force of 50 or 10 was applied from time 2000 to 5000. Before the force is applied, we can see that the spring containsing sticky beads has a smaller end to end length. After the force is applied, the effect of the sticky bead is negligable compared to the effect of the force in the case of a large force used. If a smaller force is applied to the spring, like a force of 10, the sticky beads have a greater effect.
+A force of 50 or 10 was applied from time 2000 to 5000. Before the force is applied, we can see that the spring containsing sticky beads has a smaller end-to-end length. After the force is applied, the effect of the sticky beads is negligable compared to the effect of the force in the case of a large applied force. If a smaller force is applied to the spring, like a force of 10, the sticky beads have a greater effect.
 
-The applied force will overstrech the spring. For this reason, the average end to end length will be calculated from time 2500. 
+The applied force will overstrech the spring the first time steps after application. For this reason, the average end-to-end length will be calculated from time 2500. 
 
 ```{r}
 data <- read.csv(file = "data.csv")
@@ -101,7 +99,7 @@ ggplot(data = data, aes(x = force, y = length, colour = sticky)) +
   ylab("average end-to-end length")
 ```
 
-A force too large will disrupt the spring. We can also that the sticky bead effect is mostly visible when the force is small.
+A too large force will disrupt the spring. We can also see that the sticky bead effect is mostly visible when the force is small (dot overlapping).
 
 ```{r}
 data.small <- subset(data, force < 25)
@@ -112,6 +110,6 @@ ggplot(data = data.small, aes(x = length, y = force, colour = sticky)) +
   xlab("average end-to-end length")
 ```
 
-The spring constant is not constant, but it seams to be similar between the spring containing sticky beads and the one containing none. The plot shows that the spring constant increase with respect to the average end-to-end length
+The spring constant is not constant, but it seams to be similar between the spring containing sticky beads and the one containing none. The plot shows that the spring constant increase with respect to the average end-to-end length.
 
 The source code is available at <https://github.com/leosumi/entropic-spring>.
